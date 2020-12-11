@@ -11,6 +11,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -187,7 +188,7 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	}
 
 	if v, ok := obj.(float64); ok {
-		return fmt.Sprintf("%.1f", v)
+		return fmt.Sprintf("%.1f", math.Round(v * 2) / 2)
 	}
 
 	return fmt.Sprintf("%v", obj)
