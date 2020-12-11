@@ -186,6 +186,10 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
 	}
 
+	if v, ok := obj.(float64); ok {
+		return fmt.Sprintf("%.1f", v)
+	}
+
 	return fmt.Sprintf("%v", obj)
 }
 
